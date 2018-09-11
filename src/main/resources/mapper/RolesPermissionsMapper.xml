@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zale.aftersales.mapper.RolesPermissionsMapper">
+  <resultMap id="BaseResultMap" type="com.zale.aftersales.model.RolesPermissions">
+    <id column="rolename" jdbcType="VARCHAR" property="rolename" />
+    <result column="permission" jdbcType="VARCHAR" property="permission" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from roles_permissions
+    where rolename = #{rolename,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zale.aftersales.model.RolesPermissions">
+    insert into roles_permissions (rolename, permission)
+    values (#{rolename,jdbcType=VARCHAR}, #{permission,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zale.aftersales.model.RolesPermissions">
+    update roles_permissions
+    set permission = #{permission,jdbcType=VARCHAR}
+    where rolename = #{rolename,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select rolename, permission
+    from roles_permissions
+    where rolename = #{rolename,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select rolename, permission
+    from roles_permissions
+  </select>
+</mapper>

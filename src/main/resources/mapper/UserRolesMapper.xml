@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zale.aftersales.mapper.UserRolesMapper">
+  <resultMap id="BaseResultMap" type="com.zale.aftersales.model.UserRoles">
+    <id column="username" jdbcType="VARCHAR" property="username" />
+    <result column="rolename" jdbcType="VARCHAR" property="rolename" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user_roles
+    where username = #{username,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zale.aftersales.model.UserRoles">
+    insert into user_roles (username, rolename)
+    values (#{username,jdbcType=VARCHAR}, #{rolename,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zale.aftersales.model.UserRoles">
+    update user_roles
+    set rolename = #{rolename,jdbcType=VARCHAR}
+    where username = #{username,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select username, rolename
+    from user_roles
+    where username = #{username,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select username, rolename
+    from user_roles
+  </select>
+</mapper>

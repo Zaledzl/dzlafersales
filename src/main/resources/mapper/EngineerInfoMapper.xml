@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zale.aftersales.mapper.EngineerInfoMapper">
+  <resultMap id="BaseResultMap" type="com.zale.aftersales.model.EngineerInfo">
+    <id column="engineer_username" jdbcType="VARCHAR" property="engineerUsername" />
+    <result column="engineer_password" jdbcType="VARCHAR" property="engineerPassword" />
+    <result column="engineer_name" jdbcType="VARCHAR" property="engineerName" />
+    <result column="engineer_phone_number" jdbcType="INTEGER" property="engineerPhoneNumber" />
+    <result column="engineer_equipment" jdbcType="VARCHAR" property="engineerEquipment" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from engineer_info
+    where engineer_username = #{engineerUsername,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zale.aftersales.model.EngineerInfo">
+    insert into engineer_info (engineer_username, engineer_password, 
+      engineer_name, engineer_phone_number, engineer_equipment
+      )
+    values (#{engineerUsername,jdbcType=VARCHAR}, #{engineerPassword,jdbcType=VARCHAR}, 
+      #{engineerName,jdbcType=VARCHAR}, #{engineerPhoneNumber,jdbcType=INTEGER}, #{engineerEquipment,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zale.aftersales.model.EngineerInfo">
+    update engineer_info
+    set engineer_password = #{engineerPassword,jdbcType=VARCHAR},
+      engineer_name = #{engineerName,jdbcType=VARCHAR},
+      engineer_phone_number = #{engineerPhoneNumber,jdbcType=INTEGER},
+      engineer_equipment = #{engineerEquipment,jdbcType=VARCHAR}
+    where engineer_username = #{engineerUsername,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select engineer_username, engineer_password, engineer_name, engineer_phone_number, 
+    engineer_equipment
+    from engineer_info
+    where engineer_username = #{engineerUsername,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select engineer_username, engineer_password, engineer_name, engineer_phone_number, 
+    engineer_equipment
+    from engineer_info
+  </select>
+</mapper>

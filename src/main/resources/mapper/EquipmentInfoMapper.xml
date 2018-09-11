@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zale.aftersales.mapper.EquipmentInfoMapper">
+  <resultMap id="BaseResultMap" type="com.zale.aftersales.model.EquipmentInfo">
+    <id column="equipment_number" jdbcType="CHAR" property="equipmentNumber" />
+    <result column="equipment_doctor" jdbcType="CHAR" property="equipmentDoctor" />
+    <result column="equipment_engineer" jdbcType="CHAR" property="equipmentEngineer" />
+    <result column="equipment_state" jdbcType="CHAR" property="equipmentState" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from equipment_info
+    where equipment_number = #{equipmentNumber,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zale.aftersales.model.EquipmentInfo">
+    insert into equipment_info (equipment_number, equipment_doctor, equipment_engineer, 
+      equipment_state)
+    values (#{equipmentNumber,jdbcType=CHAR}, #{equipmentDoctor,jdbcType=CHAR}, #{equipmentEngineer,jdbcType=CHAR}, 
+      #{equipmentState,jdbcType=CHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zale.aftersales.model.EquipmentInfo">
+    update equipment_info
+    set equipment_doctor = #{equipmentDoctor,jdbcType=CHAR},
+      equipment_engineer = #{equipmentEngineer,jdbcType=CHAR},
+      equipment_state = #{equipmentState,jdbcType=CHAR}
+    where equipment_number = #{equipmentNumber,jdbcType=CHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select equipment_number, equipment_doctor, equipment_engineer, equipment_state
+    from equipment_info
+    where equipment_number = #{equipmentNumber,jdbcType=CHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select equipment_number, equipment_doctor, equipment_engineer, equipment_state
+    from equipment_info
+  </select>
+</mapper>

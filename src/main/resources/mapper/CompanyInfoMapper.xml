@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zale.aftersales.mapper.CompanyInfoMapper">
+  <resultMap id="BaseResultMap" type="com.zale.aftersales.model.CompanyInfo">
+    <id column="company_username" jdbcType="VARCHAR" property="companyUsername" />
+    <result column="company_password" jdbcType="VARCHAR" property="companyPassword" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from company_info
+    where company_username = #{companyUsername,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zale.aftersales.model.CompanyInfo">
+    insert into company_info (company_username, company_password)
+    values (#{companyUsername,jdbcType=VARCHAR}, #{companyPassword,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zale.aftersales.model.CompanyInfo">
+    update company_info
+    set company_password = #{companyPassword,jdbcType=VARCHAR}
+    where company_username = #{companyUsername,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select company_username, company_password
+    from company_info
+    where company_username = #{companyUsername,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select company_username, company_password
+    from company_info
+  </select>
+</mapper>

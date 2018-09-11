@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<!-- 添加了这个才可以使用thymeleaf -->
+
+<!-- 移动端自动适配 -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- 新 Bootstrap4 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- popper.min.js 用于弹窗、提示、下拉菜单 -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+
+<!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
+<script src="https://cdn.bootcss.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>医生权限功能界面</title>
+</head>
+
+
+<body>
+<br>
+<br>
+<br>
+<h2>医生可以进行的操作:</h2>
+<br>
+<br>
+<div class="container">
+  <p>查看分配的工程师： </p>
+  <ul class="nav nav-pills">
+  <li class="nav-item">
+      <a class="nav-link active" href="/superadmin/querrypage">根据工程师姓名查询单个工程师信息</a>
+    </li>
+  </ul>
+</div>
+<br>
+<br>
+<br>
+
+<div class="container">
+  <p>查看设备相关信息/设备报修/设备保养： </p>
+  <ul class="nav nav-pills">
+    <li class="nav-item">
+      <a class="nav-link active" href="/superadmin/querrypage">根据设备编号查询单个设备信息</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="/superadmin/updateregisterpage">更改设备信息</a>
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>

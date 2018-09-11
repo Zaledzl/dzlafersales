@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zale.aftersales.mapper.DoctorInfoMapper">
+  <resultMap id="BaseResultMap" type="com.zale.aftersales.model.DoctorInfo">
+    <id column="doctor_username" jdbcType="CHAR" property="doctorUsername" />
+    <result column="doctor_password" jdbcType="CHAR" property="doctorPassword" />
+    <result column="doctorname" jdbcType="CHAR" property="doctorname" />
+    <result column="doctor_phone_number" jdbcType="INTEGER" property="doctorPhoneNumber" />
+    <result column="doctor_hospital" jdbcType="CHAR" property="doctorHospital" />
+    <result column="doctor_address" jdbcType="CHAR" property="doctorAddress" />
+    <result column="doctor_equipment" jdbcType="CHAR" property="doctorEquipment" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from doctor_info
+    where doctor_username = #{doctorUsername,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zale.aftersales.model.DoctorInfo">
+    insert into doctor_info (doctor_username, doctor_password, doctorname, 
+      doctor_phone_number, doctor_hospital, doctor_address, 
+      doctor_equipment)
+    values (#{doctorUsername,jdbcType=CHAR}, #{doctorPassword,jdbcType=CHAR}, #{doctorname,jdbcType=CHAR}, 
+      #{doctorPhoneNumber,jdbcType=INTEGER}, #{doctorHospital,jdbcType=CHAR}, #{doctorAddress,jdbcType=CHAR}, 
+      #{doctorEquipment,jdbcType=CHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zale.aftersales.model.DoctorInfo">
+    update doctor_info
+    set doctor_password = #{doctorPassword,jdbcType=CHAR},
+      doctorname = #{doctorname,jdbcType=CHAR},
+      doctor_phone_number = #{doctorPhoneNumber,jdbcType=INTEGER},
+      doctor_hospital = #{doctorHospital,jdbcType=CHAR},
+      doctor_address = #{doctorAddress,jdbcType=CHAR},
+      doctor_equipment = #{doctorEquipment,jdbcType=CHAR}
+    where doctor_username = #{doctorUsername,jdbcType=CHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select doctor_username, doctor_password, doctorname, doctor_phone_number, doctor_hospital, 
+    doctor_address, doctor_equipment
+    from doctor_info
+    where doctor_username = #{doctorUsername,jdbcType=CHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select doctor_username, doctor_password, doctorname, doctor_phone_number, doctor_hospital, 
+    doctor_address, doctor_equipment
+    from doctor_info
+  </select>
+</mapper>
